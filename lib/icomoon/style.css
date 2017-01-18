@@ -1,0 +1,132 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?v1a8nz');
+  src:  url('fonts/icomoon.eot?v1a8nz#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?v1a8nz') format('truetype'),
+    url('fonts/icomoon.woff?v1a8nz') format('woff'),
+    url('fonts/icomoon.svg?v1a8nz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_analysis:before {
+  content: "\e900";
+}
+.icon-icon_calendar:before {
+  content: "\e901";
+}
+.icon-icon_check_circle_o:before {
+  content: "\e902";
+}
+.icon-icon_check:before {
+  content: "\e903";
+}
+.icon-icon_close_circle_o:before {
+  content: "\e904";
+}
+.icon-icon_company:before {
+  content: "\e905";
+}
+.icon-icon_console:before {
+  content: "\e906";
+}
+.icon-icon_delete:before {
+  content: "\e907";
+}
+.icon-icon_double_right:before {
+  content: "\e908";
+}
+.icon-icon_double_up:before {
+  content: "\e909";
+}
+.icon-icon_down:before {
+  content: "\e90a";
+}
+.icon-icon_edit:before {
+  content: "\e90b";
+}
+.icon-icon_eye:before {
+  content: "\e90c";
+}
+.icon-icon_home:before {
+  content: "\e90d";
+}
+.icon-icon_ie:before {
+  content: "\e90e";
+}
+.icon-icon_mail:before {
+  content: "\e90f";
+}
+.icon-icon_message:before {
+  content: "\e910";
+}
+.icon-icon_minus:before {
+  content: "\e911";
+}
+.icon-icon_mobile:before {
+  content: "\e912";
+}
+.icon-icon_more:before {
+  content: "\e913";
+}
+.icon-icon_password:before {
+  content: "\e914";
+}
+.icon-icon_plus:before {
+  content: "\e915";
+}
+.icon-icon_poweroff_box:before {
+  content: "\e916";
+}
+.icon-icon_poweroff:before {
+  content: "\e917";
+}
+.icon-icon_question:before {
+  content: "\e918";
+}
+.icon-icon_right:before {
+  content: "\e919";
+}
+.icon-icon_rules:before {
+  content: "\e91a";
+}
+.icon-icon_signin_box:before {
+  content: "\e91b";
+}
+.icon-icon_smile:before {
+  content: "\e91c";
+}
+.icon-icon_theme:before {
+  content: "\e91d";
+}
+.icon-icon_user:before {
+  content: "\e91e";
+}
+.icon-icon_verificationcode:before {
+  content: "\e91f";
+}
+.icon-icon_warn:before {
+  content: "\e920";
+}
+.icon-icon_worksheet:before {
+  content: "\e921";
+}
+.icon-no_search:before {
+  content: "\e922";
+}
+

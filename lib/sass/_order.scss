@@ -1,0 +1,102 @@
+.msg-mine{
+  position: relative;
+  margin-top:20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  .msg-title{
+    .msg-img{
+      width:64px;
+      height:64px;
+    }
+    .msg-user-name{
+      display: block;
+      line-height: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  .msg-content{
+    position: relative;
+    flex-grow:1;
+    padding:20px;
+    margin-left:36px;
+    border:1px solid #DDDDDD;
+    .msg-time{
+      float:right;
+    }
+    &:before{
+      position: absolute;
+      left:-30px;
+      top:10px;
+      content:'';
+      border-top:10px solid #FFFFFF;
+      border-bottom:10px solid #FFFFFF;
+      border-right:30px solid #DDDDDD;
+      width:30px;
+      height:1px;
+    }
+    &:after{
+      position: absolute;
+      left:-27px;
+      top:10px;
+      content:'';
+      border-top:10px solid transparent;
+      border-bottom:10px solid transparent;
+      border-right:30px solid #FFFFFF;
+      width:30px;
+      height:1px;
+    }
+  }
+}
+.msg-other{
+  position: relative;
+  margin-top:20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  .msg-title{
+    .msg-img{
+      width:64px;
+      height:64px;
+    }
+    .msg-user-name{
+      display: block;
+      line-height: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  .msg-content{
+    position: relative;
+    flex-grow:1;
+    padding:20px;
+    margin-right:36px;
+    border:1px solid #DDDDDD;
+    .msg-time{
+      float:right;
+    }
+    &:before{
+      position: absolute;
+      right:-30px;
+      top:10px;
+      content:'';
+      border-top:10px solid #FFFFFF;
+      border-bottom:10px solid #FFFFFF;
+      border-left:30px solid #DDDDDD;
+      width:30px;
+      height:1px;
+    }
+    &:after{
+      position: absolute;
+      right:-27px;
+      top:10px;
+      content:'';
+      border-top:10px solid transparent;
+      border-bottom:10px solid transparent;
+      border-left:30px solid #FFFFFF;
+      width:30px;
+      height:1px;
+    }
+  }
+}

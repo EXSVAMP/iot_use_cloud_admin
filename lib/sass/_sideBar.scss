@@ -1,0 +1,118 @@
+.sideBar{
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1000;
+  margin-top: 80px;
+  box-shadow: 0 0 6px 0 rgba(51, 51, 51, 0.3);
+  background: #ffffff;
+  //background: #00A000;
+  a{
+    text-decoration: none;
+  }
+  .side_user{
+    width: 200px;
+    height: 110px;
+    background-color: #ffffff;
+    .user_content{
+      width: 80px;
+      height: 110px;
+      //border: solid 1px;
+      margin: 0 auto;
+      .user_img{
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        margin-left:7px;
+        margin-top: 10px;
+      }
+      p{
+        text-align: center;
+        margin-top: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+  .side-menu-group{
+    cursor: pointer;
+    color:#333333 ;
+    .side-menu{
+      -webkit-transition: all 500ms;
+      transition: all 500ms;
+      a{
+        color: #333333;
+      }
+      .menu-theme{
+        width: 200px;
+        height: 46px;
+        //background-color: #f6f8fa;
+        display: inline-block;
+        padding-left: 28px;
+        font-size: 16px;
+        line-height: 46px;
+        &:hover{
+          color: #00a0e9!important;
+          border-left:solid 3px #00a0e9;
+          background-color:#f6f8fa;
+        }
+        .icon{
+          position: relative;
+          top: 1px;
+          margin-right: 2px;
+        }
+        .icon-rotate{
+          float: right;
+          margin-right: 10px;
+          margin-top: 15px;
+
+          -webkit-transition: all 500ms;
+          transition: all 500ms;
+        }
+      }
+      .menu-group{
+        list-style: none;
+        -webkit-transition: all 500ms;
+        transition: all 500ms;
+        //配置动画
+        max-height: 1000px;
+        overflow: hidden;
+        .sub-menu{
+          width: 200px;
+          height: 46px;
+          background: #ffffff;
+          line-height: 46px;
+          display: inline-block;
+          padding-left: 65px;
+          &:hover{
+            color: #00a0e9!important;
+            border-left:solid 3px #00a0e9;
+            background-color:#f6f8fa;
+          }
+        }
+      }
+
+    }
+    .open{
+      .icon-rotate{
+        -webkit-transition: all 500ms;
+        transition: all 500ms;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+
+      }
+      .menu-group{
+
+        -webkit-transition: all 500ms;
+        transition: all 500ms;
+        //配置动画
+        max-height: 0px;
+      }
+    }
+  }
+  .active{
+    color: #00a0e9!important;
+    border-left:solid 3px #00a0e9;
+    background-color:#f6f8fa!important;
+  }
+}

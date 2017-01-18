@@ -1,0 +1,42 @@
+<div  class="headerManage" ng-controller="headerManageCtrl">
+  <script type="text/ng-template"  id="myModalContent.html">
+      <div class="modal-header">
+          <p>{{item.title}}</p>
+      </div>
+      <div class="modal-body">
+          <div>
+              <span class="icon-icon_poweroff"></span>
+              <span class="quit_desc">确定要退出吗?</span>
+          </div>
+      </div>
+      <div class="modal-footer">
+            <div>
+                <button type="button" class="btn btn_ok" ng-click="ok()">确定</button>
+                <button type="button" class="btn btn_cancel" ng-click="cancel()">取消</button>
+            </div>
+      </div>
+  </script>
+    <div class="logo">
+       <img src="/lib/img/logo200+80.svg"/>
+    </div>
+   <div class="head_content">
+           <div class="content_icon">
+               <span class="icon-icon_home"></span>
+               <span class="head_page">首页</span>
+           </div>
+          <div class="conten_right">
+                <!--<div class="user dropdown-toggle" dropdown-toggle data-toggle="dropdown" ng-class="{'use_active':use_active}" ng-click="use_active=!use_active">-->
+                 <div class="user dropdown-toggle" dropdown-toggle data-toggle="dropdown">
+                     <span ng-cloak class="ng-cloak">{{user_name}}</span>
+                 </div>
+                <ul class="dropdown-menu dropdown-user"  role="menu">
+                  <li><a  ng-click="open('md-quit','quit')" >退出</a></li>
+                </ul>
+                 <div class="work">
+                     <span class="icon-icon_worksheet"></span>
+                     <span>工单</span>
+                     <span class="work_count">2</span>
+                 </div>
+          </div>
+   </div>
+</div>
