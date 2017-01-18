@@ -23,16 +23,12 @@ input,button{
 .btn-blue-bg{
   background-color: $blue;
   border:1px solid $blue;
-  left:-10px;
-  bottom:-10px;
   color: $white;
 }
 
 .btn-blue-border{
   background-color: $white;
   border:1px solid $blue;
-  left:-10px;
-  bottom:-10px;
   color: $blue;
 }
 
@@ -52,5 +48,22 @@ input,button{
   color: #00A0E9;
   &:not(:first-child){
     margin-left:10px;
+  }
+}
+
+.btn-green-bg{
+  background-color: #45B6B0;
+  border:1px solid #45B6B0;
+  color:#FFFFFF;
+}
+
+.btn-add{
+  position: relative;
+  padding-left:42px;
+  &:before{
+    position: absolute;
+    left:20px;
+    font-size:22px;
+    line-height: 38px;
   }
 }

@@ -10,16 +10,8 @@
             </div>
             <div class="search-item" style="flex-grow: 0;">
                 <div><label>状态</label></div>
-                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.value;" style="flex-grow: 0;">
-                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item in selections.state">
-                        <div>{{item.name}}</div>
-                    </ui-select-choices>
-                </ui-select>
-            </div>
-            <div class="search-item" style="flex-grow: 0;">
-                <div><label>类型</label></div>
-                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.value;" style="flex-grow: 0;">
+                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.value;"
+                           style="flex-grow: 0;">
                     <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item in selections.state">
                         <div>{{item.name}}</div>
@@ -31,25 +23,30 @@
                 <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
                             ng-model="params.date_start" placeholder="请选择"/></div>
                 <div style="flex-grow: 0;"><label>至</label></div>
-                <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
-                            ng-model="params.date_end" placeholder="请选择"/></div>
+                <div>
+                    <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
+                           ng-model="params.date_end" placeholder="请选择"/>
+                </div>
             </div>
 
             <div classs="search-item">
                 <a href="javascript:void(0)" class="btn-blue-bg btn-normal" ng-click="refresh()">搜索</a>
             </div>
+            <div classs="search-item">
+                <a href="javascript:void(0)" class="btn-green-bg btn-normal icon-icon_plus btn-add" ng-click="refresh()">新建站内信</a>
+            </div>
         </div>
         <div class="table-area" ng-show="!detail&&dataList&&dataList.length>0">
             <table>
                 <thead>
-                    <tr>
-                        <th>工单编号</th>
-                        <th>问题内容</th>
-                        <th>问题类型</th>
-                        <th>状态</th>
-                        <th>最后回复时间</th>
-                        <th>操作</th>
-                    </tr>
+                <tr>
+                    <th>工单编号</th>
+                    <th>问题内容</th>
+                    <th>问题类型</th>
+                    <th>状态</th>
+                    <th>最后回复时间</th>
+                    <th>操作</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in dataList">
@@ -59,7 +56,8 @@
                     <td>{{data.state_display}}</td>
                     <td>{{data.created_at}}</td>
                     <td class="op-btns">
-                        <a class="icon-icon_eye watch-icon btn-operation" href="javascript:void(0)" ng-click="showDetail({})"></a>
+                        <a class="icon-icon_eye watch-icon btn-operation" href="javascript:void(0)"
+                           ng-click="showDetail({})"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -82,7 +80,8 @@
                     <th>
                         <uib-pagination items-per-page="tableParams.number" total-items="total" ng-change="refresh()"
                                         ng-model="tableParams.index" max-size="5"
-                                        class="pagination-sm" boundary-links="true" force-ellipses="true" first-text="首页"
+                                        class="pagination-sm" boundary-links="true" force-ellipses="true"
+                                        first-text="首页"
                                         last-text="末页" next-text="下一页" previous-text="上一页"></uib-pagination>
                         <div class="pagination-detail">
                             <span>共{{totalPage}}页</span>
@@ -130,7 +129,8 @@
             </div>
             <div class="detail-bottom-area flex-area">
                 <textarea class="normal" style="height:80px;" placeholder="请填回复内容"></textarea>
-                <a class="btn-blue-bg btn-normal" style="line-height: 80px;border-radius: 0;margin-left:20px;flex-grow: 0;min-width: 80px;">回复</a>
+                <a class="btn-blue-bg btn-normal"
+                   style="line-height: 80px;border-radius: 0;margin-left:20px;flex-grow: 0;min-width: 80px;">回复</a>
             </div>
         </div>
     </div>

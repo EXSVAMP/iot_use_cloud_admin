@@ -5,7 +5,7 @@
  */
 var app = angular.module('RDash');
 var orderList=require("pages/order/orderList");
-var messageAdd=require("pages/message/messageAdd");
+var messageAdd=require("pages/message/messageList");
 app.config(function($stateProvider, $urlRouterProvider,$controllerProvider){
     $stateProvider
         .state('orderList', orderList)
