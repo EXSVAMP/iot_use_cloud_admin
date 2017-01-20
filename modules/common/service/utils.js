@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.service("utils",function($http,$q,baseUrl){
+app.service("utils",function($http,$q,baseUrl,$timeout ){
     var selections = {};
     var getFileStorageTocken = function () {
         var deferred = $q.defer();
