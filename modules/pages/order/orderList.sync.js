@@ -57,4 +57,7 @@ app.register.controller("orderListCtrl", function ($scope, $location,$timeout,$h
             }
         });
     });
+    $scope.showImgs=function(imgs){
+        utils.showImgs(imgs);
+    }
 });
