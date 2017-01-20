@@ -79,9 +79,8 @@ function HttpInterceptor($q, $injector) {
                         template: '<p style=\"text-align: center\">错误信息：' + res.data.message + '</p>',
                         plain: true
                     });
-                }
-                ;
-
+                    return $q.reject(res);
+                };
             }
             return res;
         },
@@ -105,7 +104,7 @@ function HttpInterceptor($q, $injector) {
             } else if (501 === err.status) {
                 // ...
             } else if (403 === err.status) {
-                // window.location.href = "/login.html"
+                window.open('/login.html','_self');
             }
             return $q.reject(err);
         }

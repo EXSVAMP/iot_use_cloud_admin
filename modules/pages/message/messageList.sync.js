@@ -1,23 +1,43 @@
 var app = angular.module('RDash');
 
-app.register.controller("messageListCtrl", function ($scope, listService) {
-    $scope.title = '工单处理／工单列表';
+app.register.controller("messageListCtrl", function ($scope,$http,listService,baseUrl) {
+    $scope.title = '站内信设置/站内信列表';
     $scope.params={
-        date_start:'',
-        date_end:'',
-        state:''
+        pk:'',
+        startDate:'',
+        endDate:'',
+        status:''
     };
-    listService.init($scope,'/api/1/work_order');
+    listService.init($scope,'/api/1/admin/message/',{
+        fieldSet:{
+            title:'',
+            content:''
+        }
+    });
     $scope.selections={
-        state:[{name:'test1',value:1},{name:'test2',value:2}]
+        status:[{name:'未发布',value:0},{name:'已发布',value:1},{name:'撤销发布',value:2}]
     };
-    // utils.getSelection('camera').then(function(data){
-    //     console.log(data);
-    // });
-    $scope.detail=null;
-    $scope.showDetail=function(data){
-        $scope.detail=data;
-        $scope.title = '工单管理／我的工单/工单详情';
+    $scope.submit=function(status){
+        var params = $scope.fieldSet;
+        if(status){
+            params.status="1";
+        }else{
+            params.status="0";
+        }
+        if(params.id){
+            $http.put(baseUrl.getUrl()+'/api/1/admin/message/'+params.id+'/',params).success(function(data){
+                $scope.back();
+            });
+        }else{
+            $http.post(baseUrl.getUrl()+'/api/1/admin/message/',params).success(function(data){
+                $scope.back();
+            });
+        }
     }
-    $scope.dataList = [{},{},{},{},{},{},{},{},{},{}]
+    $scope.editStatus = function(id,status){
+        $http.put(baseUrl.getUrl()+'/api/1/admin/message/'+id+'/',{status:status.toString}).success(function(data){
+            $scope.back();
+        });
+    }
+    $scope.refresh();
 });

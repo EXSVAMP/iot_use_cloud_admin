@@ -1,14 +1,8 @@
 <div  class="sideBar" ng-controller="sideBarCtrl">
-     <div class="side_user">
-        <div class="user_content">
-          <img class="user_img" src="/lib/img/head.svg"/>
-          <p ng-cloak class="ng-cloak">{{user_name}}</p>
-        </div>
-     </div>
      <div class="side-menu-group">
           <div class="side-menu" ng-class="{true:'open'}[status.order]">
                <span class="menu-theme" ng-click="toggle('order')" >
-                    <span class="icon-icon_theme icon"></span>
+                    <span class="icon-icon_worksheet icon"></span>
                     <span>工单处理</span>
                     <span class="icon-icon_down icon-rotate"></span>
                 </span>
@@ -21,7 +15,7 @@
             </div>
          <div class="side-menu" ng-class="{true:'open'}[status.message]">
                <span class="menu-theme" ng-click="toggle('message')" >
-                    <span class="icon-icon_theme icon"></span>
+                    <span class="icon-icon_message icon"></span>
                     <span>站内信设置</span>
                     <span class="icon-icon_down icon-rotate"></span>
                 </span>

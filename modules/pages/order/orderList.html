@@ -1,45 +1,44 @@
 <div class="main">
     <div class="main-content">
         <div class="title-area">
-            {{title}}
+            <a class="font-blue" style="margin-right:10px;" ng-click="back()" ng-show="step!=0"><<返回</a>{{title}}
         </div>
-        <div class="search-bar" ng-show="!detail">
+        <div class="search-bar" ng-show="step==0">
             <div class="search-item">
                 <div><label>编号</label></div>
-                <div><input type="text" ng-model="params.no"/></div>
+                <div><input type="text" ng-model="params.pk"/></div>
             </div>
             <div class="search-item" style="flex-grow: 0;">
-                <div><label>状态</label></div>
-                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.value;" style="flex-grow: 0;">
-                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item in selections.state">
-                        <div>{{item.name}}</div>
-                    </ui-select-choices>
-                </ui-select>
-            </div>
+            <div><label>状态</label></div>
+            <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.key;" style="flex-grow: 0;">
+                <ui-select-match placeholder="请选择">{{$select.selected.value}}</ui-select-match>
+                <ui-select-choices repeat="(key,item) in selections.order_state">
+                    <div>{{item.value}}</div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
             <div class="search-item" style="flex-grow: 0;">
                 <div><label>类型</label></div>
-                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.value;" style="flex-grow: 0;">
-                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item in selections.state">
-                        <div>{{item.name}}</div>
+                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.order_type = $select.selected.key;" style="flex-grow: 0;">
+                    <ui-select-match placeholder="请选择">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="(key,item) in selections.order_type">
+                        <div>{{item.value}}</div>
                     </ui-select-choices>
                 </ui-select>
             </div>
             <div class="search-item">
                 <div><label>时间</label></div>
-                <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
-                            ng-model="params.date_start" placeholder="请选择"/></div>
+                <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" placeholder="请选择"
+                            onchange="angular.element(this).scope().params.date_start=this.value;"/></div>
                 <div style="flex-grow: 0;"><label>至</label></div>
-                <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
-                            ng-model="params.date_end" placeholder="请选择"/></div>
+                <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" placeholder="请选择"
+                            onchange="angular.element(this).scope().params.date_end=this.value;"/></div>
             </div>
-
-            <div classs="search-item">
+            <div class="btn-area">
                 <a href="javascript:void(0)" class="btn-blue-bg btn-normal" ng-click="refresh()">搜索</a>
             </div>
         </div>
-        <div class="table-area" ng-show="!detail&&dataList&&dataList.length>0">
+        <div class="table-area" ng-show="step==0&&dataList&&dataList.length>0">
             <table>
                 <thead>
                     <tr>
@@ -53,13 +52,13 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in dataList">
-                    <td>1011</td>
+                    <td>{{data.id}}</td>
                     <td>{{data.description}}</td>
-                    <td>物接入</td>
+                    <td>{{selections.order_type[data.order_type]}}</td>
                     <td>{{data.state_display}}</td>
                     <td>{{data.created_at}}</td>
                     <td class="op-btns">
-                        <a class="icon-icon_eye watch-icon btn-operation" href="javascript:void(0)" ng-click="showDetail({})"></a>
+                        <a class="icon-icon_eye watch-icon btn-operation" href="javascript:void(0)" ng-click="showData(data)"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -67,18 +66,6 @@
             <table class="table table-pagination" ng-show="totalPage>1">
                 <thead>
                 <tr>
-                    <th class="pagination-items-per-page">
-                        <div class="pagination-content">
-                            <span class="pagination-tip">每页显示数量</span>
-                            <ui-select ng-model="tableParams.number" theme="bootstrap"
-                                       on-select="tableParams.number=$select.selected;refresh();">
-                                <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
-                                <ui-select-choices repeat="item in selections.numbers">
-                                    <div ng-bind-html="item"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                    </th>
                     <th>
                         <uib-pagination items-per-page="tableParams.number" total-items="total" ng-change="refresh()"
                                         ng-model="tableParams.index" max-size="5"
@@ -94,43 +81,39 @@
                 </thead>
             </table>
         </div>
-        <div class="detail-area" ng-show="detail">
+        <div class="detail-area"  ng-show="step==2">
             <div class="detail-top-area flex-area">
-                <span style="text-align: left;">工单编号：1011</span>
+                <span style="text-align: left;">工单编号：{{detail.id}}</span>
+                <span style="text-align: center;">问题类型：{{selections.order_type[detail.order_type]}}</span>
                 <span style="text-align: center;">状态：{{detail.state_display}}</span>
                 <span style="text-align: right;">提交时间：{{detail.created_at}}</span>
             </div>
-            <div class="detail-center-area">
+            <div class="detail-center-area order-list">
                 <div class="msg-mine">
                     <div class="msg-title">
                         <img class="msg-img" src="/lib/img/head.svg">
-                        <span class="msg-user-name">我</span>
+                        <span class="msg-user-name">{{detail.user}}</span>
                     </div>
                     <div class="msg-content">
-                        <p>从光猫直接出来的一根网线，这个网线在笔记本上连得上，而且可以上网。但是插在台式机的时候，直接显示网络电缆没有插好，去修的时候，修理店的网线插上就能用，说明台式机的网卡没有问题</p>
-                        <span class="msg-time">2016-08-31 14:50:22</span>
+                        <p>{{detail.description}}</p>
+                        <span class="msg-time">{{detail.created_at}}</span>
                     </div>
                 </div>
-                <div class="msg-other">
+                <div class="msg-other" ng-repeat="data in msgs">
                     <div class="msg-content">
-                        <p>网卡接口是不是好的,网线接头——水晶头有没有搞好
-                            左右动一下网线看有没有效果
-                            1、检查与主板连接的网卡是否松动，建议取下来用刷子轻轻刷一下，去灰尘后，重新装上。
-                            2、检查你的网上邻居里的本地连接内的所有连接是否都启用，如果未启用，请启用。
-                            3、水晶头与网卡连接的地方是否进了头发丝或沙粒等灰尘，因为再细小的东西一旦进去也会导致信号短路的，用嘴吹一下就好了，然后再插上水晶头
-                            4、检查网线两端的水晶头连接和内部线路排列情况，水晶头上的线排列顺序是橙蓝绿棕，你看看是按这个顺序排列的吗
-                            5、如果以上3种方法都不管用的话，建议删除网卡驱动后，重新再安装网卡驱动后，重启，看看是否能成功</p>
-                        <span>2016-08-31 14:50:22</span>
+                        <p>{{data.message}}</p>
+                        <span class="msg-time">{{data.created_at}}</span>
                     </div>
                     <div class="msg-title">
                         <img class="msg-img" src="/lib/img/head.svg">
-                        <span class="msg-user-name">有色云</span>
+                        <span class="msg-user-name">{{data.user}}</span>
                     </div>
                 </div>
             </div>
-            <div class="detail-bottom-area flex-area">
-                <textarea class="normal" style="height:80px;" placeholder="请填回复内容"></textarea>
-                <a class="btn-blue-bg btn-normal" style="line-height: 80px;border-radius: 0;margin-left:20px;flex-grow: 0;min-width: 80px;">回复</a>
+            <div class="detail-bottom-area flex-area" ng-show="detail.state!='done'">
+                <textarea class="normal" style="height:80px;" placeholder="请填回复内容" ng-model="fieldSet.message"></textarea>
+                <a class="btn-blue-bg btn-normal" ng-click="submit()" style="line-height: 80px;border-radius: 0;margin-left:20px;flex-grow: 0;min-width: 80px;">回复</a>
+                <a class="btn-gray-border btn-normal" ng-click="closeOrder()" style="line-height: 80px;border-radius: 0;margin-left:10px;flex-grow: 0;min-width: 80px;">完成</a>
             </div>
         </div>
     </div>

@@ -8,9 +8,17 @@ require('common/constant');
  */
 var app = angular.module('RDash');
 
-app.controller("loginCtrl", function ($scope, $location) {
+app.controller("loginCtrl", function ($scope,$http,baseUrl) {
+    $scope.form = {
+        username:'',
+        password:''
+    }
     $scope.login=function(){
-        window.open('/index.html','_self');
+        $http.post(baseUrl.getUrl()+'/api/1/admin/user/login',$scope.form).success(function(data){
+            sessionStorage.setItem('user_token',data.data.token);
+            sessionStorage.setItem('user_info',angular.toJson(data.data));
+            window.open('/index.html','_self');
+        });
     };
 });
 
@@ -78,30 +86,5 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
 
         }
 
-    }
-}).service("url_junction", function () {
-    return {
-        getQuery: function (dic) {
-            var query_url = '';
-            for (var i in dic) {
-                if (dic[i] && dic[i] != '-1') {
-                    if (query_url == "") {
-                        query_url += "?" + i + "=" + dic[i]
-                    } else {
-                        query_url += "&" + i + "=" + dic[i]
-                    }
-                }
-            }
-            return query_url
-        },
-        getDict: function (dic) {
-            var ret_dic = {};
-            for (var i in dic) {
-                if (dic[i] && dic[i] != '-1') {
-                    ret_dic[i] = dic[i];
-                }
-            }
-            return ret_dic;
-        }
     }
 });

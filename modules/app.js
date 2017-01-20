@@ -1,4 +1,5 @@
-angular.module("RDash", ['ui.bootstrap', 'ui.router', 'ngCookies', 'ngDialog', 'cgBusy', 'truncate', 'ui.select', 'ngSanitize', 'angular-loading-bar', 'ngAnimate']);
+angular.module("RDash", ['ui.bootstrap', 'ui.router', 'ngCookies', 'ngDialog', 'cgBusy', 'truncate', 'ui.select',
+    'ngSanitize', 'angular-loading-bar', 'ngAnimate']);
 require('router');
 require('interceptor');
 require('common/service/listService');
@@ -25,33 +26,16 @@ app.controller("MasterCtrl", function ($scope, $location) {
     }
 });
 
-app.controller('headerManageCtrl', function ($scope, $cookieStore, $http, $uibModal, baseUrl, ngDialog, $rootScope) {
-    var username = sessionStorage.getItem("loginName");
-    if (username) {
-        $scope.user_name = username;
-    };
-    $scope.open = function (size, method) {
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            controller: 'ModalHeader',
-            templateUrl: "myModalContent.html",
-            size: size,
-            resolve: {
-                items: function () {
-                    if (method == "quit") {
-                        return {
-                            title: "退出IOT云",
-                            method: "quit",
-                            scope: $scope
-                        }
-                    }
-                }
-            }
-        });
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-        });
+app.controller('headerManageCtrl', function ($scope) {
+    var userInfo;
+    userInfo = sessionStorage.getItem('user_info');
+    if(userInfo){
+        userInfo = angular.fromJson(userInfo);
+        $scope.userName = userInfo.username;
+    }
+    $scope.loginOut = function (size, method) {
+        sessionStorage.setItem('user_token','');
+        window.open('/login.html','_self');
     }
 
 });
@@ -131,7 +115,7 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
         }
 
     }
-}).service("url_junction", function () {
+}).service("url_function", function () {
     return {
         getQuery: function (dic) {
             var query_url = '';
@@ -157,3 +141,14 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
         }
     }
 });
+
+$.fn.datepicker.dates['zh'] = {
+    days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+    daysShort: ["日", "一", "二", "三", "四", "五", "六", "日"],
+    daysMin: ["日", "一", "二", "三", "四", "五", "六", "日"],
+    months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+    monthsShort: ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"],
+    meridiem: ["上午", "下午"],
+    //suffix:      ["st", "nd", "rd", "th"],
+    today: "今天"
+};

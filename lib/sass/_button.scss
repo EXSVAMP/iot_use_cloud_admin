@@ -1,4 +1,4 @@
-.btn{
+a{
   cursor:pointer;
 }
 input,button{
@@ -35,6 +35,9 @@ input,button{
 .font-red{
   color:#FF6B6B!important;
 }
+.font-blue{
+  color:#00A0E9!important;
+}
 
 .btn-area-center{
   text-align: center;
@@ -66,4 +69,10 @@ input,button{
     font-size:22px;
     line-height: 38px;
   }
+}
+
+.btn-gray-border{
+  background-color: $white;
+  border:1px solid $defaultDarkBorder;
+  color: $defaultFontColor;
 }
