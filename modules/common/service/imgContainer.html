@@ -1,0 +1,10 @@
+<div class="img-container">
+    <img ng-repeat="img in imgs" ng-show="currentIndex==$index" class="img" ng-src="{{img | img}}"/>
+    <div class="img-bar">
+        <span style="margin-right:30px;">{{currentIndex+1}}/{{imgs.length}}张</span>
+        <a class="icon-icon_left_circle_o" ng-class="currentIndex>0?'':'disable'"
+           ng-click="currentIndex>0?(currentIndex=currentIndex-1):''"></a>
+        <a class="icon-icon_right_circle_o" ng-class="currentIndex<imgs.length-1?'':'disable'"
+           ng-click="currentIndex<imgs.length-1?(currentIndex=currentIndex+1):''"></a>
+    </div>
+</div>

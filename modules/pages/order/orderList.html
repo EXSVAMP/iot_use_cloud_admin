@@ -83,10 +83,25 @@
         </div>
         <div class="detail-area"  ng-show="step==2">
             <div class="detail-top-area flex-area">
-                <span style="text-align: left;">工单编号：{{detail.id}}</span>
-                <span style="text-align: center;">问题类型：{{selections.order_type[detail.order_type]}}</span>
-                <span style="text-align: center;">状态：{{detail.state_display}}</span>
-                <span style="text-align: right;">提交时间：{{detail.created_at}}</span>
+                <!--<span style="text-align: left;">工单编号：{{detail.id}}</span>-->
+                <!--<span style="text-align: center;">问题类型：{{selections.order_type[detail.order_type]}}</span>-->
+                <!--<span style="text-align: center;">状态：{{detail.state_display}}</span>-->
+                <!--<span style="text-align: right;">提交时间：{{detail.created_at}}</span>-->
+                <table class="detail-table">
+                    <tbody>
+                    <tr>
+                        <td style="width:33%;">工单编号：{{detail.id}}</td>
+                        <!--<td style="text-align: center;">问题类型：{{selections.order_type[detail.order_type]}}</td>-->
+                        <td style="width:33%;">状态：{{detail.state_display}}</td>
+                        <td style="width:33%;">提交时间：{{detail.created_at}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%;">联系手机：{{detail.phone}}</td>
+                        <td style="width:33%;">联系邮箱：{{detail.email}}</td>
+                        <td style="width:33%;">附件：{{detail.annex.length==0?'无附件':''}}<a ng-show="detail.annex.length>0" ng-click="showImgs(detail.urls)">查看</a></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="detail-center-area order-list">
                 <div class="msg-mine">
