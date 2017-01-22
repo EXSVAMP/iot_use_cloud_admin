@@ -6,6 +6,7 @@ require('common/service/listService');
 require('common/constant');
 require('common/fliter');
 require('common/service/utils');
+require('components/opTip');
 
 
 /**
@@ -56,7 +57,7 @@ app.controller("sideBarCtrl", function ($scope, $cookieStore, $http, $uibModal, 
     }
 })
 
-app.service("baseUrl", function (constant, ngDialog,$location) {
+app.service("baseUrl", function (constant, ngDialog,$location,$timeout) {
     var url = constant.url;
     return {
         getUrl: function () {
@@ -112,6 +113,12 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
             }
 
 
+        },
+        bodyNoScroll: function(){
+            angular.element('body').addClass('height-view')
+        },
+        bodyScroll: function(){
+            angular.element('body').removeClass('height-view')
         }
 
     }
@@ -141,6 +148,53 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
         }
     }
 });
+
+app.controller('opTipCtr', function ($scope, $cookieStore, $http, baseUrl, ngDialog) {
+
+    $scope.$on('optip', function (d, data) {
+        console.log(1,data)
+        $scope.flag = data.flag;
+        $scope.optipText = data.msg;
+
+    });
+})
+
+app.controller('ModalMessageList', function ($scope, $cookieStore, $uibModalInstance, $http, items, baseUrl, ngDialog) {
+    baseUrl.bodyNoScroll()
+    var url = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.cancel = function () {
+        baseUrl.bodyScroll()
+        $uibModalInstance.dismiss('cancel');
+    };
+    if ($scope.item.method == 'delete') {
+        $scope.ok = function () {
+            var data = items.data;
+            $http({
+                method: 'delete',
+                url: url+'/api/1/admin/message/'+items.data.id+'/',
+                //data: {messageId:[items.data.id]},
+                data: {},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    }
+                    return str.join("&");
+                }
+            }).success(function(data){
+                items.scope.optipShow(1, '操作成功')
+                if(items.scope.step==0)items.scope.refresh();
+            });
+            $uibModalInstance.close();
+
+        }
+    }
+
+
+})
+
 
 $.fn.datepicker.dates['zh'] = {
     days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
