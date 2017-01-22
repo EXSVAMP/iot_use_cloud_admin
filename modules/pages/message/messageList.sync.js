@@ -18,8 +18,11 @@ app.register.controller("messageListCtrl", function ($scope,$http,listService,ba
     $scope.selections={
         status:[{name:'未发布',value:0},{name:'已发布',value:1},{name:'撤销发布',value:2}]
     };
-    $scope.submit=function(status){
+    $scope.submit=function(status,sId){
         var params = $scope.fieldSet;
+        if(sId){
+            params.id = sId;
+        }
         if(status){
             params.status="1";
         }else{

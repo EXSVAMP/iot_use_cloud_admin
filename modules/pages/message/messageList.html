@@ -137,8 +137,9 @@
                 <p>{{detail.content}}</p>
             </div>
             <div class="detail-bottom-area" style="text-align: center;">
-                <a class="btn-normal btn-blue-bg" ng-click="editData(detail)">编辑</a>
-                <a class="btn-normal btn-green-bg" ng-show="detail.status==0">发布</a>
+                <a class="btn-normal btn-blue-bg" ng-click="editData(detail)" ng-show="detail.status==0">编辑</a>
+                <a class="btn-normal btn-green-bg" ng-show="detail.status==0" ng-click="submit(1,detail.id)">发布</a>
+                <a class="btn-normal btn-green-bg" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>
             </div>
         </div>
     </div>
