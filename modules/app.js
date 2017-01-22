@@ -6,6 +6,7 @@ require('common/service/listService');
 require('common/constant');
 require('common/fliter');
 require('common/service/utils');
+require('components/opTip');
 
 
 /**
@@ -56,7 +57,7 @@ app.controller("sideBarCtrl", function ($scope, $cookieStore, $http, $uibModal, 
     }
 })
 
-app.service("baseUrl", function (constant, ngDialog,$location) {
+app.service("baseUrl", function (constant, ngDialog,$location,$timeout) {
     var url = constant.url;
     return {
         getUrl: function () {
@@ -112,6 +113,9 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
             }
 
 
+        },
+        bodyNoScroll: function(){
+            angular.element('body').addClass('height-view')
         }
 
     }
@@ -141,6 +145,58 @@ app.service("baseUrl", function (constant, ngDialog,$location) {
         }
     }
 });
+
+app.controller('opTipCtr', function ($scope, $cookieStore, $http, baseUrl, ngDialog) {
+
+    $scope.$on('optip', function (d, data) {
+        console.log(1,data)
+        $scope.flag = data.flag;
+        $scope.optipText = data.msg;
+
+    });
+})
+
+app.controller('ModalMessageList', function ($scope, $cookieStore, $uibModalInstance, $http, items, baseUrl, ngDialog) {
+    baseUrl.bodyNoScroll()
+    var url = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+    if ($scope.item.method == 'delete') {
+        $scope.ok = function () {
+            var data = items.data;
+            angular.element('#messageId').val(items.data.id)
+            var formWayData = $('#message-delete-form').serialize()
+            $scope.params = {
+                method: 'delete',
+                url: url + "/api/1/message/",
+                data: formWayData, // form way submit
+                params: {},
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+            $http($scope.params).success(function (data) {
+                    if (data.code == "200") {
+                        items.scope.optipShow(1, '操作成功')
+                        items.scope.refresh();
+                    }
+                }).error(function () {
+                    //ngDialog.open({
+                    //    template: '<p style=\"text-align: center\">添加失败:'+data.description+'</p>',
+                    //    plain: true
+                    //});
+                    //items.scope.optipShow(0, '操作失败,' + data.description)
+                });
+            $uibModalInstance.close();
+
+        }
+    }
+
+
+})
+
 
 $.fn.datepicker.dates['zh'] = {
     days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],

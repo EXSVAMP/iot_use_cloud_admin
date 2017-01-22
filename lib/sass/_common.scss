@@ -628,3 +628,83 @@ textarea, p, section, strong, a, th, td, tr,span {
   padding: 20px;
   min-width: 1240px;
 }
+
+.form-group-project{
+  margin-top: 30px;
+}
+.modal-footer-project{
+  margin-bottom: 30px;
+}
+.modal-md-add{
+  .modal-body{
+    text-align: center;
+
+
+  }
+}
+
+.modal-pop-close{
+  position: absolute;
+  top: 17px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.relative{
+  position: relative;
+}
+
+.custom-modal {
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.custom-modal-op-tip {
+  width: 237px;
+  height: 95px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -168.5px;
+  margin-top: -47.5px;
+  background: #0c0f16;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.custom-modal-op-cont {
+  text-align: center;
+}
+
+.op-tip-icon, .op-tip-icon-error {
+  margin-top: 30px;
+  color: #85d335;
+  font-size: 32px;
+  display: inline-block;
+}
+
+.op-tip-icon-error {
+  color: #ff6b6b;
+}
+
+.op-tip-text {
+  font-size: 20px;
+  color: #fff;
+  margin-left: 10px;
+  position: relative;
+  top: -5px;
+}
+
+.obj-show {
+  display: block !important;
+}
+
+.obj-hide {
+  display: none !important;
+}

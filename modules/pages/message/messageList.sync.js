@@ -1,6 +1,7 @@
 var app = angular.module('RDash');
 
-app.register.controller("messageListCtrl", function ($scope,$http,listService,baseUrl) {
+app.register.controller("messageListCtrl", function ($scope,$http,listService,baseUrl,$uibModal,$timeout) {
+    $scope.optip = 'obj-hide'
     $scope.title = '站内信设置/站内信列表';
     $scope.params={
         pk:'',
@@ -40,4 +41,47 @@ app.register.controller("messageListCtrl", function ($scope,$http,listService,ba
         });
     }
     $scope.refresh();
+
+    $scope.optipHide = function () {
+            $timeout(function () {
+                $scope.optip = 'obj-hide'
+            }, 1000)}
+
+
+    $scope.optipShow = function (iFlag, message) {
+            if(iFlag == 1){
+                $scope.$broadcast('optip', {flag: iFlag, msg: message});
+                $scope.optip = 'obj-show'
+                $scope.optipHide()
+            }
+        }
+
+    $scope.remove = function (size, method, data) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            controller: 'ModalMessageList',
+            templateUrl: "myModalMessageList.html",
+            size: size,
+            resolve: {
+                items: function () {
+                    if (method == "delete") {
+                        return {
+                            title: "删除站内信",
+                            method: "delete",
+                            scope: $scope,
+                            data: data
+                        }
+                    }
+                }
+
+
+            }
+        });
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+        })
+
+
+    }
 });
