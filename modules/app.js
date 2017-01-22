@@ -171,28 +171,22 @@ app.controller('ModalMessageList', function ($scope, $cookieStore, $uibModalInst
         $scope.ok = function () {
             var data = items.data;
             angular.element('#messageId').val(items.data.id)
-            var formWayData = $('#message-delete-form').serialize()
-            $scope.params = {
+            $http({
                 method: 'delete',
-                url: url + "/api/1/message/",
-                data: formWayData, // form way submit
-                params: {},
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }
-            $http($scope.params).success(function (data) {
-                    if (data.code == "200") {
-                        items.scope.optipShow(1, '操作成功')
-                        items.scope.refresh();
+                url: url+'/api/1/message/',
+                data: {messageId:[items.data.id]},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                     }
-                }).error(function () {
-                    //ngDialog.open({
-                    //    template: '<p style=\"text-align: center\">添加失败:'+data.description+'</p>',
-                    //    plain: true
-                    //});
-                    //items.scope.optipShow(0, '操作失败,' + data.description)
-                });
+                    return str.join("&");
+                }
+            }).success(function(data){
+                items.scope.optipShow(1, '操作成功')
+                if(items.scope.step==0)items.scope.refresh();
+            });
             $uibModalInstance.close();
 
         }
