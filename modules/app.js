@@ -116,6 +116,9 @@ app.service("baseUrl", function (constant, ngDialog,$location,$timeout) {
         },
         bodyNoScroll: function(){
             angular.element('body').addClass('height-view')
+        },
+        bodyScroll: function(){
+            angular.element('body').removeClass('height-view')
         }
 
     }
@@ -161,6 +164,7 @@ app.controller('ModalMessageList', function ($scope, $cookieStore, $uibModalInst
     var url = baseUrl.getUrl();
     $scope.item = items;
     $scope.cancel = function () {
+        baseUrl.bodyScroll()
         $uibModalInstance.dismiss('cancel');
     };
     if ($scope.item.method == 'delete') {

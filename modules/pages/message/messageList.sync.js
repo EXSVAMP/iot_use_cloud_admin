@@ -43,18 +43,19 @@ app.register.controller("messageListCtrl", function ($scope,$http,listService,ba
     $scope.refresh();
 
     $scope.optipHide = function () {
-            $timeout(function () {
-                $scope.optip = 'obj-hide'
-            }, 1000)}
+        $timeout(function () {
+            $scope.optip = 'obj-hide'
+        }, 1000)}
 
 
     $scope.optipShow = function (iFlag, message) {
-            if(iFlag == 1){
-                $scope.$broadcast('optip', {flag: iFlag, msg: message});
-                $scope.optip = 'obj-show'
-                $scope.optipHide()
-            }
+        baseUrl.bodyScroll()
+        if(iFlag == 1){
+            $scope.$broadcast('optip', {flag: iFlag, msg: message});
+            $scope.optip = 'obj-show'
+            $scope.optipHide()
         }
+    }
 
     $scope.remove = function (size, method, data) {
         var modalInstance = $uibModal.open({
