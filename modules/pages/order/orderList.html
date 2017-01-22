@@ -103,18 +103,29 @@
                     </tbody>
                 </table>
             </div>
-            <div class="detail-center-area order-list">
+            <div class="detail-center-area order-list" >
                 <div class="msg-mine">
-                    <div class="msg-title">
-                        <img class="msg-img" src="/lib/img/head.svg">
-                        <span class="msg-user-name">{{detail.user}}</span>
-                    </div>
-                    <div class="msg-content">
-                        <p>{{detail.description}}</p>
-                        <span class="msg-time">{{detail.created_at}}</span>
-                    </div>
+                <div class="msg-title">
+                    <img class="msg-img" src="/lib/img/head.svg">
+                    <span class="msg-user-name">{{detail.user}}</span>
                 </div>
-                <div class="msg-other" ng-repeat="data in msgs">
+                <div class="msg-content">
+                    <p>{{detail.description}}</p>
+                    <span class="msg-time">{{detail.created_at}}</span>
+                </div>
+              </div>
+                  <div ng-repeat="data in msgs">
+                    <div class="msg-mine"  ng-show="detail.user==data.user">
+                        <div class="msg-title">
+                            <img class="msg-img" src="/lib/img/head.svg">
+                            <span class="msg-user-name">{{data.user}}</span>
+                        </div>
+                        <div class="msg-content">
+                            <p>{{data.message}}</p>
+                            <span class="msg-time">{{data.created_at}}</span>
+                        </div>
+                   </div>
+                  <div class="msg-other"  ng-show="admin_id==data.user">
                     <div class="msg-content">
                         <p>{{data.message}}</p>
                         <span class="msg-time">{{data.created_at}}</span>
@@ -123,6 +134,7 @@
                         <img class="msg-img" src="/lib/img/head.svg">
                         <span class="msg-user-name">{{data.user}}</span>
                     </div>
+                 </div>
                 </div>
             </div>
             <div class="detail-bottom-area flex-area" ng-show="detail.state!='done'">
