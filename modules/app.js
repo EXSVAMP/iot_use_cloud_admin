@@ -170,11 +170,11 @@ app.controller('ModalMessageList', function ($scope, $cookieStore, $uibModalInst
     if ($scope.item.method == 'delete') {
         $scope.ok = function () {
             var data = items.data;
-            angular.element('#messageId').val(items.data.id)
             $http({
                 method: 'delete',
-                url: url+'/api/1/message/',
-                data: {messageId:[items.data.id]},
+                url: url+'/api/1/admin/message/'+items.data.id+'/',
+                //data: {messageId:[items.data.id]},
+                data: {},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function (obj) {
                     var str = [];
