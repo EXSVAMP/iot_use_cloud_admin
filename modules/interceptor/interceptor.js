@@ -104,7 +104,7 @@ function HttpInterceptor($q, $injector) {
             } else if (501 === err.status) {
                 // ...
             } else if (403 === err.status) {
-                window.open('/login.html','_self');
+                window.open('login.html','_self');
             }
             return $q.reject(err);
         }

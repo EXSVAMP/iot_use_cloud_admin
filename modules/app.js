@@ -35,7 +35,7 @@ app.controller('headerManageCtrl', function ($scope) {
     }
     $scope.loginOut = function (size, method) {
         sessionStorage.setItem('user_token','');
-        window.open('/login.html','_self');
+        window.open('login.html','_self');
     }
 
 });

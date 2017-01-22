@@ -17,7 +17,7 @@ app.controller("loginCtrl", function ($scope,$http,baseUrl) {
         $http.post(baseUrl.getUrl()+'/api/1/admin/user/login',$scope.form).success(function(data){
             sessionStorage.setItem('user_token',data.data.token);
             sessionStorage.setItem('user_info',angular.toJson(data.data));
-            window.open('/index.html','_self');
+            window.open('index.html','_self');
         });
     };
 });

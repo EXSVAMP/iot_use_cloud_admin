@@ -6,13 +6,10 @@ fis.set('statics', '/statics'); //static目录
 //FIS modjs模块化方案，您也可以选择amd/commonjs等
 fis.hook('module', {
     mode: 'mod'
-}).hook("relative");
+});
 
 /*************************目录规范*****************************/
 fis.match("**/*", {
-       relative: true 
-    })
-    .match("**/*", {
         release: '${statics}/$&'
     })
     //modules下面都是模块化资源
