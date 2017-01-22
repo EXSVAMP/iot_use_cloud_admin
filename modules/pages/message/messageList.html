@@ -1,4 +1,31 @@
 <div class="main">
+    <script type="text/ng-template" id="myModalMessageList.html">
+        <div class="modal-header relative">
+            <p>{{item.title}}</p>
+            <span class="icon-icon_close_circle_o modal-pop-close" ng-click="cancel()"></span>
+        </div>
+
+        <div ng-show="item.method == 'delete'">
+            <form class="modal-body" id="message-delete-form" name="message-delete-form">
+                <div class="warn_delete">
+                    <span class="icon-icon_warn"></span>
+
+                    <div class='delete_desc'>
+                        <p>确定要删除这个站内信吗</p>
+
+                        <p>注意：删除以后不可恢复！</p>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer modal-footer-project">
+                <div>
+                    <button type="button" class="btn btn_delete" ng-click="ok()">删除</button>
+                    <button type="button" class="btn btn_cancel " ng-click="cancel()">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </script>
     <div class="main-content">
         <div class="title-area">
             <a class="font-blue" style="margin-right:10px;" ng-click="back()" ng-show="step!=0"><<返回</a>{{title}}
@@ -57,7 +84,7 @@
                         <a class="icon-icon_eye watch-icon btn-operation" href="javascript:void(0)"
                            ng-click="showData(data)"></a>
                         <a class="icon-icon_delete watch-icon btn-operation font-red" href="javascript:void(0)"
-                           ng-click="remove(data)"></a>
+                           ng-click="remove('md-add','delete',data)"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -110,9 +137,11 @@
                 <p>{{detail.content}}</p>
             </div>
             <div class="detail-bottom-area" style="text-align: center;">
-                <a class="btn-normal btn-blue-bg" ng-click="editData(detail)">编辑</a>
-                <a class="btn-normal btn-green-bg" ng-show="detail.status==0">发布</a>
+                <a class="btn-normal btn-blue-bg" ng-click="editData(detail)" ng-show="detail.status==0">编辑</a>
+                <a class="btn-normal btn-green-bg" ng-show="detail.status==0" ng-click="submit(1,detail.id)">发布</a>
+                <a class="btn-normal btn-green-bg" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>
             </div>
         </div>
     </div>
+    <optip ng-class="optip"></optip>
 </div>
