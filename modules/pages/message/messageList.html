@@ -33,9 +33,9 @@
         <div class="search-bar" ng-show="step==0">
             <div class="search-item">
                 <div><label>编号</label></div>
-                <div><input type="text" ng-model="params.pk"/></div>
+                <div><input type="text" ng-model="params.pk" placeholder="请填写编号"/></div>
             </div>
-            <div class="search-item" style="flex-grow: 0;">
+            <div class="search-item order-select" style="flex-grow: 0;">
                 <div><label>状态</label></div>
                 <ui-select ng-model="paramsStatus" theme="bootstrap" on-select="params.status = $select.selected.value;"
                            style="flex-grow: 0;">
@@ -48,11 +48,11 @@
             <div class="search-item">
                 <div><label>时间</label></div>
                 <div><input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" placeholder="请选择"
-                            onchange="angular.element(this).scope().params.date_start=this.value;"/></div>
+                            onchange="angular.element(this).scope().params.startDate=this.value;"/></div>
                 <div style="flex-grow: 0;"><label>至</label></div>
                 <div>
                     <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" placeholder="请选择"
-                           onchange="angular.element(this).scope().params.date_end=this.value;"/>
+                           onchange="angular.element(this).scope().params.endDate=this.value;"/>
                 </div>
             </div>
 
@@ -89,6 +89,12 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="no_content" ng-show="dataList.length==0">
+                <!--<p><span class="icon-no_search"></span></p>-->
+                <p><img class="empty-list-img" src="/lib/img/IOT-no_search.svg__inline"/></p>
+
+                <p>找不到你需要的内容，请重新搜索</p>
+            </div>
             <table class="table table-pagination" ng-show="totalPage>1">
                 <thead>
                 <tr>
@@ -121,7 +127,7 @@
                         </textarea>
                 </div>
                 <div class="btn-area">
-                    <a class="btn-normal btn-blue-bg" ng-click="submit(0)">保存</a>
+                    <a class="btn-normal btn-blue-bg margin-right-50" ng-click="submit(0)">保存</a>
                     <a class="btn-normal btn-blue-border" ng-click="submit(1)">保存并发布</a>
                 </div>
             </div>
@@ -137,9 +143,9 @@
                 <p>{{detail.content}}</p>
             </div>
             <div class="detail-bottom-area" style="text-align: center;">
-                <a class="btn-normal btn-blue-bg" ng-click="editData(detail)" ng-show="detail.status==0">编辑</a>
+                <a class="btn-normal btn-blue-bg margin-right-50" ng-click="editData(detail)" ng-show="detail.status==0">编辑</a>
                 <a class="btn-normal btn-green-bg" ng-show="detail.status==0" ng-click="submit(1,detail.id)">发布</a>
-                <a class="btn-normal btn-green-bg" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>
+                <a class="btn-normal btn-gray-border" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>
             </div>
         </div>
     </div>

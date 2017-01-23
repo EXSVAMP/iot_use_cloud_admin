@@ -716,3 +716,34 @@ textarea, p, section, strong, a, th, td, tr,span {
 .font-weight-normal{
   font-weight: normal;
 }
+
+//margin padding
+$list: 1 2 3 4 5 10 12 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100;
+$poslist: top right bottom left;
+@each $i in $list {
+  @each $j in $poslist {
+    .margin-#{$j}-#{$i} {
+      margin-#{$j}: #{$i}px !important;
+    }
+    .padding-#{$j}-#{$i} {
+      padding-#{$j}: #{$i}px !important;
+    }
+
+  }
+
+  .padding-#{$i} {
+    padding-#{$i}: #{$i}px !important;
+  }
+
+}
+
+@each $i in $poslist {
+  .clear-padding-#{$i} {
+    padding-#{$i}: 0 !important;
+  }
+
+  .clear-margin-#{$i} {
+    margin-#{$i}: 0 !important;
+  }
+
+}
