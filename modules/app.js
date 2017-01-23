@@ -7,7 +7,7 @@ require('common/constant');
 require('common/fliter');
 require('common/service/utils');
 require('components/opTip');
-
+require('common/global');
 
 /**
  * Master Controller
