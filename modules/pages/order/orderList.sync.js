@@ -32,6 +32,14 @@ app.register.controller("orderListCtrl", function ($scope, $location,$timeout,$h
             });
         });
     }
+
+    userInfo = sessionStorage.getItem('user_info');
+    if(userInfo){
+        userInfo = angular.fromJson(userInfo);
+        $scope.admin_id= userInfo.id;
+        console.log("<====用户Id=====>"+$scope.admin_id);
+    }
+
     $scope.submit=function(){
         var params = $scope.fieldSet;
         params.order_id = $scope.detail.id;
