@@ -22,14 +22,17 @@ app.factory('listService', function ($http,baseUrl,url_function) {
                 },true);
             }
             scope.refresh=function(page,callback){
-                if(angular.isNumber(page)&&page>scope.totalPage)return;
-                if(angular.isNumber(page)){
+                if(/^\d+$/.test(page)&&page>scope.totalPage)return;
+                if(/^\d+$/.test(page)){
                     scope.tableParams.index=page
                 }else if(!angular.isUndefined(page)&&page!=null&&page!==''){
                     return;
                 }
                 if(scope.totalPage&&scope.tableParams.index>scope.totalPage)return;
                 if(!scope.tableParams.index)return;
+
+                console.log('scope.tableParams---'+page,scope.tableParams)
+
                 var descent = '';
                 var order = scope.order;
                 for(var key in order){

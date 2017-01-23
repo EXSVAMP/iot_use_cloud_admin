@@ -89,12 +89,6 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="no_content" ng-show="dataList.length==0">
-                <!--<p><span class="icon-no_search"></span></p>-->
-                <p><img class="empty-list-img" src="/lib/img/IOT-no_search.svg__inline"/></p>
-
-                <p>找不到你需要的内容，请重新搜索</p>
-            </div>
             <table class="table table-pagination" ng-show="totalPage>1">
                 <thead>
                 <tr>
@@ -113,6 +107,12 @@
                 </tr>
                 </thead>
             </table>
+        </div>
+        <div class="no_content" ng-show="step==0&&dataList.length==0">
+            <!--<p><span class="icon-no_search"></span></p>-->
+            <p><img class="empty-list-img" src="/lib/img/IOT-no_search.svg?__inline"/></p>
+
+            <p>找不到你需要的内容，请重新搜索</p>
         </div>
         <div class="form-area" ng-show="step==1">
             <div class="form-field-set">
