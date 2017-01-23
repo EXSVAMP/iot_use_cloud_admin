@@ -20,10 +20,15 @@ input,button{
     margin-right:5px;
   }
 }
-.btn-blue-bg{
+.btn-blue-bg,a.btn-blue-bg{
   background-color: $blue;
   border:1px solid $blue;
   color: $white;
+  &:hover{
+    background-color: $blueHover;
+    border:1px solid $blueHover;
+    color: $white;
+  }
 }
 
 .btn-blue-border{
@@ -54,10 +59,15 @@ input,button{
   }
 }
 
-.btn-green-bg{
+.btn-green-bg,a.btn-green-bg{
   background-color: #45B6B0;
   border:1px solid #45B6B0;
   color:#FFFFFF;
+  &:hover{
+    background-color: #3b9c97;
+    border:1px solid #3b9c97;
+    color:#FFFFFF;
+  }
 }
 
 .btn-gray-bg{

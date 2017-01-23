@@ -31,8 +31,6 @@ app.factory('listService', function ($http,baseUrl,url_function) {
                 if(scope.totalPage&&scope.tableParams.index>scope.totalPage)return;
                 if(!scope.tableParams.index)return;
 
-                console.log('scope.tableParams---'+page,scope.tableParams)
-
                 var descent = '';
                 var order = scope.order;
                 for(var key in order){
