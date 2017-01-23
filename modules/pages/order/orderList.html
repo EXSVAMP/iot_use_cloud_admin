@@ -138,7 +138,7 @@
                  </div>
                 </div>
             </div>
-            <div class="detail-bottom-area flex-area" ng-show="detail.state!='done'">
+            <div class="detail-bottom-area flex-area" ng-show="step==2 && detail.state!='done'">
                 <textarea class="normal" style="height:80px;" placeholder="请填回复内容" ng-model="fieldSet.message"></textarea>
                 <a class="btn-blue-bg btn-normal" ng-click="submit()" style="line-height: 80px;border-radius: 0;margin-left:20px;flex-grow: 0;min-width: 80px;">回复</a>
                 <a class="btn-gray-border btn-normal" ng-click="closeOrder()" style="line-height: 80px;border-radius: 0;margin-left:10px;flex-grow: 0;min-width: 80px;">完成</a>
