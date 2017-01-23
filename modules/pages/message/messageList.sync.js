@@ -84,6 +84,7 @@ app.register.controller("messageListCtrl", function ($scope,$http,listService,ba
         modalInstance.result.then(function (selectedItem) {
             $scope.selected = selectedItem;
         }, function () {
+            baseUrl.bodyScroll()
         })
 
 
