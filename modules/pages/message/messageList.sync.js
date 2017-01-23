@@ -89,4 +89,17 @@ app.register.controller("messageListCtrl", function ($scope,$http,listService,ba
 
 
     }
+
+    $timeout(function(){
+        $('.date-picker').datepicker({
+            language: 'zh',
+            orientation: "left",
+            todayHighlight: true,
+            autoclose:true,
+            templates:{
+                leftArrow: '<i class="fa fa-angle-left"></i>',
+                rightArrow: '<i class="fa fa-angle-right"></i>'
+            }
+        });
+    });
 });
