@@ -6,9 +6,9 @@
         <div class="search-bar" ng-show="step==0">
             <div class="search-item">
                 <div><label>编号</label></div>
-                <div><input type="text" ng-model="params.pk"/></div>
+                <div><input type="text" ng-model="params.pk" placeholder="请填写编号"/></div>
             </div>
-            <div class="search-item" style="flex-grow: 0;">
+            <div class="search-item order-select" style="flex-grow: 0;">
             <div><label>状态</label></div>
             <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.state = $select.selected.key;" style="flex-grow: 0;">
                 <ui-select-match placeholder="请选择">{{$select.selected.value}}</ui-select-match>
@@ -17,7 +17,7 @@
                 </ui-select-choices>
             </ui-select>
         </div>
-            <div class="search-item" style="flex-grow: 0;">
+            <div class="search-item order-select" style="flex-grow: 0;">
                 <div><label>类型</label></div>
                 <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.order_type = $select.selected.key;" style="flex-grow: 0;">
                     <ui-select-match placeholder="请选择">{{$select.selected.value}}</ui-select-match>
@@ -80,6 +80,12 @@
                 </tr>
                 </thead>
             </table>
+        </div>
+        <div class="no_content" ng-show="step==0&&dataList.length==0">
+            <!--<p><span class="icon-no_search"></span></p>-->
+            <p><img class="empty-list-img" src="/lib/img/IOT-no_search.svg?__inline"/></p>
+
+            <p>找不到你需要的内容，请重新搜索</p>
         </div>
         <div class="detail-area"  ng-show="step==2">
             <div class="detail-top-area flex-area">
