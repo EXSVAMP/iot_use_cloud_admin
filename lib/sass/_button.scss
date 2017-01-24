@@ -59,6 +59,9 @@ input,button{
   }
   &:not(:first-child){
     margin-left:10px;
+    &:hover{
+      color: #e66060 !important;
+    }
   }
 }
 
