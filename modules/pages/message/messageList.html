@@ -37,11 +37,17 @@
             </div>
             <div class="search-item order-select" style="flex-grow: 0;">
                 <div><label>状态</label></div>
-                <ui-select ng-model="paramsStatus" theme="bootstrap" on-select="params.status = $select.selected.value;"
-                           style="flex-grow: 0;">
-                    <ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item in selections.status">
-                        <div>{{item.name}}</div>
+                <!--<ui-select ng-model="paramsStatus" theme="bootstrap" on-select="params.status = $select.selected.value;"-->
+                           <!--style="flex-grow: 0;">-->
+                    <!--<ui-select-match placeholder="请选择">{{$select.selected.name}}</ui-select-match>-->
+                    <!--<ui-select-choices repeat="item in selections.status">-->
+                        <!--<div>{{item.name}}</div>-->
+                    <!--</ui-select-choices>-->
+                <!--</ui-select>-->
+                <ui-select ng-model="paramsState" theme="bootstrap" on-select="params.status = $select.selected.key;" style="flex-grow: 0;">
+                    <ui-select-match placeholder="请选择">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="(key,item) in selections.status">
+                        <div>{{item.value}}</div>
                     </ui-select-choices>
                 </ui-select>
             </div>
@@ -145,7 +151,7 @@
             <div class="detail-bottom-area" style="text-align: center;">
                 <a class="btn-normal btn-blue-bg margin-right-50" ng-click="editData(detail)" ng-show="detail.status==0">编辑</a>
                 <a class="btn-normal btn-green-bg" ng-show="detail.status==0" ng-click="submit(1,detail.id)">发布</a>
-                <a class="btn-normal btn-gray-border" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>
+                <!--<a class="btn-normal btn-gray-border" ng-show="detail.status==1" ng-click="submit(null,detail.id)">撤销</a>-->
             </div>
         </div>
     </div>
