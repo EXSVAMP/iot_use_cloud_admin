@@ -5,6 +5,7 @@
   font-size: 14px;
   text-align: center;
   color: #bbbbbb;
+  margin-top:-58px;
   p {
     line-height: 58px;
   }
@@ -301,8 +302,10 @@
   border: solid 1px #ff6b6b;;
   color: #ff6b6b;;
   &:hover {
-    color: #E66060;
-    border: solid 1px #E66060;
+    //color: #E66060;
+    color: #fff;
+    //border: solid 1px #E66060;
+    background-color: #ff6b6b;
   }
 }
 .btn_show,.btn_reset{
