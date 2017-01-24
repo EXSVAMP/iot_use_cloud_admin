@@ -59,6 +59,7 @@ input,button{
   }
   &:not(:first-child){
     margin-left:10px;
+    outline: none;
     &:hover{
       color: #e66060 !important;
     }
