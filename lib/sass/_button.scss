@@ -54,6 +54,9 @@ input,button{
 
 .btn-operation{
   color: #00A0E9;
+  &:hover{
+    color: #008dcf;
+  }
   &:not(:first-child){
     margin-left:10px;
   }
