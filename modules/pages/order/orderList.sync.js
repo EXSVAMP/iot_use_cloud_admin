@@ -12,8 +12,12 @@ app.register.controller("orderListCtrl", function ($scope, $location,$timeout,$h
         order_state:{},
         order_type:{}
     }
+
     utils.getSelection('work_order').then(function(data){
+
         $scope.selections=data;
+        angular.merge($scope.selections.order_state,{"-1":"------------"});
+        angular.merge($scope.selections.order_type,{"-1":"------------"});
     });
     listService.init($scope,'/api/1/admin/work_order/',{
         fieldSet:{
@@ -43,10 +47,15 @@ app.register.controller("orderListCtrl", function ($scope, $location,$timeout,$h
     $scope.submit=function(){
         var params = $scope.fieldSet;
         params.order_id = $scope.detail.id;
-        $http.post(baseUrl.getUrl()+'/api/1/admin/work_order/msg/',params).success(function(res){
-            $scope.afterShowData();
-            $scope.reset();
-        });
+        if($scope.fieldSet.message){
+            $http.post(baseUrl.getUrl()+'/api/1/admin/work_order/msg/',params).success(function(res){
+                $scope.afterShowData();
+                $scope.reset();
+            });
+        }else{
+            baseUrl.ngDialog("请填写回复内容");
+        }
+
     }
     $scope.closeOrder = function(){
         $http.put(baseUrl.getUrl()+'/api/1/admin/work_order/'+$scope.detail.id+'/',{pk:$scope.detail.id}).success(function(res){
