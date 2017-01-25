@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RDash">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>仓储云管理系统</title>    <!--<link rel="stylesheet" type="text/css" href="/lib/icomoon/style.css">-->    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+
+
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/bootstrap/less/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/bootstrap/dist/css/bootstrap.min_34f021f.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/font-awesome/css/font-awesome.min_67a1d98.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/rdash-ui/dist/css/rdash.min_381cb0e.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/ng-dialog/css/ngDialog.min_c5fa3e8.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/ng-dialog/css/ngDialog-theme-default.min_b900984.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-ui-select/dist/select.min_7b8d485.css" />
+    <link rel="stylesheet" type="text/css" href="statics/lib/icomoon/style_7a058e9.css" />
+    <link rel="stylesheet" type="text/css" href="statics/lib/sass/main.css?" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-busy/dist/angular-busy.min_382a255.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-loading-bar/build/loading-bar_1e609e1.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min_bb3e0b6.css" />
+</head>
+<body ng-controller="MasterCtrl">
+<div class="headerManage" ng-controller="headerManageCtrl">
+    <span style="margin-left:30px;font-size:30px;line-height: 80px;">有色物联网云管理后台</span>
+    <div class="head_content" style="float:right;">
+        <div class="conten_right open">
+            <div class="user dropdown-toggle" dropdown-toggle data-toggle="dropdown">
+                <span ng-cloak class="ng-cloak">{{userName}}</span>
+            </div>
+            <ul class="dropdown-menu dropdown-user" role="menu">
+                <li><a ng-click="loginOut()">退出</a></li>
+            </ul>
+            <div class="work"></div>
+        </div>
+    </div>
+</div>
+<div  class="sideBar" ng-controller="sideBarCtrl">
+     <div class="side-menu-group">
+          <div class="side-menu" ng-class="{true:'open'}[status.order]">
+               <span class="menu-theme" ng-click="toggle('order')" >
+                    <span class="icon-icon_worksheet icon"></span>
+                    <span>工单处理</span>
+                    <span class="icon-icon_down icon-rotate"></span>
+                </span>
+              <ul class="menu-group">
+                  <li class="sub-menu" ui-sref-active="active" ui-sref="orderList">
+                      <a>查看工单</a>
+                  </li>
+              </ul>
+
+            </div>
+         <div class="side-menu" ng-class="{true:'open'}[status.message]">
+               <span class="menu-theme" ng-click="toggle('message')" >
+                    <span class="icon-icon_message icon"></span>
+                    <span>站内信设置</span>
+                    <span class="icon-icon_down icon-rotate"></span>
+                </span>
+             <ul class="menu-group">
+                 <li class="sub-menu" ui-sref-active="active" ui-sref="messageAdd">
+                     <a>新建站内信</a>
+                 </li>
+             </ul>
+         </div>
+     </div>
+</div>
+<div id="page-wrap">
+    <div class="page-content">
+        <div ui-view>
+        </div>
+    </div>
+    <div class="manage_foot">
+    <p>
+        Copyright 2015 - 2016. 湖北橙石电子商务有限公司 & 上海橙金信息科技有限公司 All Rights Reserved. 沪ICP备16024255号
+    </p>
+</div>
+</div>
+
+<script type="text/javascript" src="statics/lib/mod_a11279b.js"></script>
+<script type="text/javascript">/*resourcemap*/
+require.resourceMap({
+  "res": {
+    "pages/order/orderList.sync": {
+      "url": "statics/modules/pages/order/orderList.sync_0dde4fe.js",
+      "type": "js"
+    },
+    "pages/message/messageList.sync": {
+      "url": "statics/modules/pages/message/messageList.sync_6a64866.js",
+      "type": "js"
+    }
+  },
+  "pkg": {}
+});</script>
+<script type="text/javascript" src="statics/modules/pages/order/orderList_392fa9e.js"></script>
+<script type="text/javascript" src="statics/modules/pages/message/messageList_f6b98a5.js"></script>
+<script type="text/javascript" src="statics/modules/router/router_9e8b01b.js"></script>
+<script type="text/javascript" src="statics/modules/interceptor/interceptor_e1a6941.js"></script>
+<script type="text/javascript" src="statics/modules/common/service/listService_b21e210.js"></script>
+<script type="text/javascript" src="statics/modules/common/constant_fa38b3a.js"></script>
+<script type="text/javascript" src="statics/modules/common/fliter_33a8949.js"></script>
+<script type="text/javascript" src="statics/modules/common/service/utils_44b3521.js"></script>
+<script type="text/javascript" src="statics/modules/components/opTip_0a6c8c5.js"></script>
+<script type="text/javascript" src="statics/modules/common/global_4491a7e.js"></script>
+<script type="text/javascript" src="statics/modules/app_e3842ee.js"></script>
+<script src="statics/lib/jquery_ae0f519.js"></script>
+<script src="statics/lib/jquery-ui.min_cebec43.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular/angular.min_06accd3.js"></script>
+<script type="text/javascript" src="statics/bower_components/jquery/dist/jquery.min_e071abd.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/dropdown_652c9b5.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/carousel_b3b3e76.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/transition_328faf4.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-bootstrap/ui-bootstrap-tpls.min_3ffe43d.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-cookies/angular-cookies.min_1b5fb3c.js"></script>
+<script type="text/javascript" src="statics/bower_components/ui-router/release/angular-ui-router.min_0ef20b2.js"></script>
+<script type="text/javascript" src="statics/bower_components/ng-dialog/js/ngDialog.min_9164cdb.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-animate/angular-animate.min_3f4e3a1.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-busy/dist/angular-busy.min_16c3001.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-truncate/src/truncate_c35a9be.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-ui-select/dist/select.min_9cc2428.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-sanitize/angular-sanitize_018cb4c.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-loading-bar/build/loading-bar.min_c1a475d.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min_4b68703.js"></script>
+<script type="text/javascript" src="statics/lib/lodash/lodash_1ddc0ab.js"></script>
+<script type="text/javascript">
+       require('app')
+   </script>
+</body>
+</html>

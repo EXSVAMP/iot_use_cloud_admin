@@ -1,0 +1,29 @@
+<div  class="sideBar" ng-controller="sideBarCtrl">
+     <div class="side-menu-group">
+          <div class="side-menu" ng-class="{true:'open'}[status.order]">
+               <span class="menu-theme" ng-click="toggle('order')" >
+                    <span class="icon-icon_worksheet icon"></span>
+                    <span>工单处理</span>
+                    <span class="icon-icon_down icon-rotate"></span>
+                </span>
+              <ul class="menu-group">
+                  <li class="sub-menu" ui-sref-active="active" ui-sref="orderList">
+                      <a>查看工单</a>
+                  </li>
+              </ul>
+
+            </div>
+         <div class="side-menu" ng-class="{true:'open'}[status.message]">
+               <span class="menu-theme" ng-click="toggle('message')" >
+                    <span class="icon-icon_message icon"></span>
+                    <span>站内信设置</span>
+                    <span class="icon-icon_down icon-rotate"></span>
+                </span>
+             <ul class="menu-group">
+                 <li class="sub-menu" ui-sref-active="active" ui-sref="messageAdd">
+                     <a>新建站内信</a>
+                 </li>
+             </ul>
+         </div>
+     </div>
+</div>
