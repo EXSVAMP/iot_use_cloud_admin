@@ -1,0 +1,45 @@
+.wrapper{
+  background-color: $defaultBg;
+}
+
+.page{
+  position: relative;
+  .login-center{
+    position: relative;
+    left:50%;
+    margin-left:-250px;
+    margin-top:150px;
+    width:500px;
+    text-align: center;
+    .logo{
+      display: inline-block;
+      margin-bottom:20px;
+    }
+    .logo-text{
+      display: block;
+      margin-bottom:20px;
+    }
+    .login-form{
+      border:1px solid #DDDDDD;
+      padding:40px 55px;
+      .form-row-input{
+        position: relative;
+        overflow: hidden;
+        margin-bottom:20px;
+        input{
+          line-height: 48px;
+          width: 100%;
+          padding:0 10px 0 40px;
+        }
+        .input-icon{
+          position: absolute;
+          top:0;
+          left:10px;
+          line-height: 48px;
+          font-size: 24px;
+          color:$darkBlue;
+        }
+      }
+    }
+  }
+}

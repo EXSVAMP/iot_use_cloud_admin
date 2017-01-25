@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="RDash">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>仓储云管理系统</title>    <!--<link rel="stylesheet" type="text/css" href="/lib/icomoon/style.css">-->    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/bootstrap/less/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/bootstrap/dist/css/bootstrap.min_34f021f.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/font-awesome/css/font-awesome.min_67a1d98.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/rdash-ui/dist/css/rdash.min_381cb0e.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/ng-dialog/css/ngDialog.min_c5fa3e8.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/ng-dialog/css/ngDialog-theme-default.min_b900984.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-ui-select/dist/select.min_7b8d485.css" />
+    <link rel="stylesheet" type="text/css" href="statics/lib/icomoon/style_7a058e9.css" />
+    <link rel="stylesheet" type="text/css" href="statics/lib/sass/main.css?" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-busy/dist/angular-busy.min_382a255.css" />
+    <link rel="stylesheet" type="text/css" href="statics/bower_components/angular-loading-bar/build/loading-bar_1e609e1.css" />
+</head>
+<body ng-controller="loginCtrl">
+<div class="page">
+    <div class="login-center">
+        <img class="logo" src="statics/lib/img/logo-gray_f0f6db3.svg" style="width:245px;"/>
+        <span class="logo-text">你好，我是有色物联网云管理后台！</span>
+        <div class="login-form">
+            <div class="form-row-input">
+                <span class="icon-icon_user input-icon"></span>
+                <input type="text" ng-model="form.username" placeholder="邮箱(xxx@1b2b.cn)"/>
+            </div>
+            <div class="form-row-input">
+                <span class="icon-icon_password input-icon"></span>
+                <input type="password" ng-model="form.password"  placeholder="密码"/>
+            </div>
+            <a class="btn btn-blue-bg btn-normal" style="width: 100%;line-height: 58px;font-size: 18px;" ng-click="login()">立即登录</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="statics/lib/mod_a11279b.js"></script>
+<script type="text/javascript" src="statics/modules/interceptor/interceptor_e1a6941.js"></script>
+<script type="text/javascript" src="statics/modules/common/constant_fa38b3a.js"></script>
+<script type="text/javascript" src="statics/modules/login_9b8b193.js"></script>
+<script src="statics/lib/jquery_ae0f519.js"></script>
+<script src="statics/lib/jquery-ui.min_cebec43.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular/angular.min_06accd3.js"></script>
+<script type="text/javascript" src="statics/bower_components/jquery/dist/jquery.min_e071abd.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/dropdown_652c9b5.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/carousel_b3b3e76.js"></script>
+<script type="text/javascript" src="statics/bower_components/bootstrap/js/transition_328faf4.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-bootstrap/ui-bootstrap-tpls.min_3ffe43d.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-cookies/angular-cookies.min_1b5fb3c.js"></script>
+<script type="text/javascript" src="statics/bower_components/ui-router/release/angular-ui-router.min_0ef20b2.js"></script>
+<script type="text/javascript" src="statics/bower_components/ng-dialog/js/ngDialog.min_9164cdb.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-animate/angular-animate.min_3f4e3a1.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-busy/dist/angular-busy.min_16c3001.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-truncate/src/truncate_c35a9be.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-ui-select/dist/select.min_9cc2428.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-sanitize/angular-sanitize_018cb4c.js"></script>
+<script type="text/javascript" src="statics/bower_components/angular-loading-bar/build/loading-bar.min_c1a475d.js"></script>
+<script type="text/javascript" src="statics/lib/lodash/lodash_1ddc0ab.js"></script>
+<script type="text/javascript">
+       require('login')
+   </script>
+</body>
+</html>

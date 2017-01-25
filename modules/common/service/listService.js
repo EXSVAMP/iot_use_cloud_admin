@@ -109,6 +109,7 @@ app.factory('listService', function ($http,baseUrl,url_function) {
                 });
             }
             scope.reset=function(){
+                //console.log('scope.fieldSet',scope.fieldSet)
                 angular.forEach(scope.fieldSet,function(val,key){
                     scope.fieldSet[key] = '';
                 });
